@@ -4,6 +4,5 @@ import androidx.appcompat.app.AppCompatActivity
 
 class ScheduleActivity : AppCompatActivity() {
 
-    // TODO
 
 }

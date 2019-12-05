@@ -7,7 +7,6 @@ import java.util.concurrent.ThreadLocalRandom
 
 object LocalRepository : Repository {
 
-    // TODO:
 
     private fun createWeekSchedule(): List<TrainingSession> {
 
@@ -89,6 +88,18 @@ object LocalRepository : Repository {
             }
         }
         return trainingSessions
+    }
+
+    override fun queryAllTrainingsOfDay(weekDay: WeekDay): List<TrainingSession> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun markTrainingAssist(taskId: Long) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun markTrainingNoAssist(taskId: Long) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 }
