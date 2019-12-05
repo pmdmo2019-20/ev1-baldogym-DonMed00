@@ -34,7 +34,7 @@ class TrainingSessionActivity : AppCompatActivity() {
 
     private fun setupViews() {
         val training : TrainingSession =viewModel.getElement(id)
-        btnJoinAct.setOnClickListener { viewModel.updateTrainingJoinState(training,training.userJoined) }
+        btnJoinAct.setOnClickListener { changeJoin(training) }
         imgTraining.setImageResource(training.photoResId)
         lblTitleAct.text =training.name
         lblTimeAct.text = training.time
@@ -42,7 +42,23 @@ class TrainingSessionActivity : AppCompatActivity() {
         lblTrainerAct.text = training.trainer
         lblDay.text = training.weekDay.toString()
         lblDescription.text = training.description
+        if(training.userJoined){
+            btnJoinAct.background = resources.getDrawable(R.color.white_semi)
+            btnJoinAct.setTextColor(resources.getColor(R.color.black))
+            btnJoinAct.text=getString(R.string.schedule_item_quit)
+        }else{
+            btnJoinAct.background = resources.getDrawable(R.color.black)
+            btnJoinAct.setTextColor(resources.getColor(R.color.white))
+            btnJoinAct.text=getString(R.string.schedule_item_join)
+
+        }
         lblBar.text=viewModel.element.value?.participants.toString().plus(" participants")
+
+
+    }
+
+    private fun changeJoin(training: TrainingSession) {
+        viewModel.updateTrainingJoinState(training, training.userJoined)
 
 
     }

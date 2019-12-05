@@ -18,7 +18,7 @@ class ScheduleActivityViewModel(
     val trainings: LiveData<List<TrainingSession>>
         get() = _trainings
 
-    private val _currentDay: MutableLiveData<WeekDay> =
+     val _currentDay: MutableLiveData<WeekDay> =
         MutableLiveData(getCurrentWeekDay())
 
     private val _element : MutableLiveData<TrainingSession> = MutableLiveData()
@@ -26,7 +26,7 @@ class ScheduleActivityViewModel(
     get() = _element
 
     init {
-        refreshLists(repository.queryAllTrainingsOfDay(getCurrentWeekDay()))
+        refreshLists(repository.queryAllTrainingsOfDay(_currentDay.value!!))
 
     }
 
