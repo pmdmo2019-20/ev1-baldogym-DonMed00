@@ -34,7 +34,7 @@ class ScheduleActivityViewModel(
         queryTrainings(weekDay)
     }
 
-    fun updateTrainingCompletedState(trainingSession: TrainingSession, userJoined: Boolean) {
+    fun updateTrainingJoinState(trainingSession: TrainingSession, userJoined: Boolean) {
         if (!userJoined) {
             repository.markTrainingAssist(trainingSession.id)
         } else {

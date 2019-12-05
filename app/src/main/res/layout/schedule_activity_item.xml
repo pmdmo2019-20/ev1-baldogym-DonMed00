@@ -8,6 +8,7 @@
     android:padding="@dimen/schedule_item_padding"
     tools:context=".ui.schedule.ScheduleActivity">
 
-    <!-- TODO -->
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
