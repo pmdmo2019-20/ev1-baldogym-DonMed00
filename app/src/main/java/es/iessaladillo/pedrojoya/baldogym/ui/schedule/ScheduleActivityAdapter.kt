@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import es.iessaladillo.pedrojoya.baldogym.R
 import es.iessaladillo.pedrojoya.baldogym.data.entity.TrainingSession
 import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.schedule_activity_item.*
 import kotlinx.android.synthetic.main.schedule_activity_item.view.*
 
 class ScheduleActivityAdapter : RecyclerView.Adapter<ScheduleActivityAdapter.ViewHolder>() {
@@ -54,7 +55,7 @@ class ScheduleActivityAdapter : RecyclerView.Adapter<ScheduleActivityAdapter.Vie
         RecyclerView.ViewHolder(containerView), LayoutContainer {
 
         init {
-            //seton click
+            btnJoin.setOnClickListener { onItemClickListener?.invoke(adapterPosition) }
         }
 
         @SuppressLint("ResourceAsColor")
@@ -66,6 +67,18 @@ class ScheduleActivityAdapter : RecyclerView.Adapter<ScheduleActivityAdapter.Vie
                 containerView.lblTrainer.text = trainer
                 containerView.lblRoom.text=room
                 containerView.lblParticipants.text= "$participants participantes"
+                containerView.btnJoin.run {
+                    if(userJoined){
+                        background = resources.getDrawable(R.color.black)
+                        setTextColor(resources.getColor(R.color.white))
+                        text = resources.getString(R.string.schedule_item_quit)
+                    }else{
+                        background = resources.getDrawable(R.color.white)
+                        setTextColor(resources.getColor(R.color.black))
+                        text = resources.getString(R.string.schedule_item_join)
+                    }
+                }
+
 
             }
 

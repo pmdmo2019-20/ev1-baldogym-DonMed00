@@ -42,13 +42,10 @@ class ScheduleActivity : AppCompatActivity() {
     private fun setupViews() {
         setupDays()
         setupRecyclerView()
-        setupCurrentDay()
-
     }
 
     private fun setupCurrentDay() {
         val listTextView: ArrayList<TextView> = arrayListOf(lblDay1,lblDay2,lblDay3,lblDay4,lblDay5,lblDay6,lblDay7)
-
         listTextView.forEach {
             it.setOnClickListener { selectDay(it as TextView) }
         }
@@ -65,17 +62,9 @@ class ScheduleActivity : AppCompatActivity() {
             lblDay7 -> setDay(getString(R.string.schedule_sunday))
 
         }
-        val listTextView: ArrayList<TextView> = arrayListOf(lblDay1,lblDay2,lblDay3,lblDay4,lblDay5,lblDay6,lblDay7)
-
-        listTextView.forEach {
-            it.setTextColor(resources.getColor(R.color.white_semi))
-            }
 
     }
 
-    private fun changeColor(lblDay: TextView) {
-
-    }
 
 
     private fun setDay(day: String) {
@@ -90,9 +79,11 @@ class ScheduleActivity : AppCompatActivity() {
             getString(R.string.schedule_sunday) -> viewModel.filterAllTrainingsOfDay(WeekDay.SUNDAY)
 
         }
+
     }
 
     private fun setupDays() {
+        lblCurrentDay.text = getCurrentWeekDay().toString().substring(0, 1) + getCurrentWeekDay().toString().toLowerCase().substring(1)
         lblDay1.text = getString(R.string.schedule_mon)
         lblDay2.text = getString(R.string.schedule_tue)
         lblDay3.text = getString(R.string.schedule_wed)
@@ -100,8 +91,7 @@ class ScheduleActivity : AppCompatActivity() {
         lblDay5.text = getString(R.string.schedule_fri)
         lblDay6.text = getString(R.string.schedule_sat)
         lblDay7.text = getString(R.string.schedule_sun)
-        lblCurrentDay.text = getCurrentWeekDay().toString()
-
+        setupCurrentDay()
     }
 
     private fun setupRecyclerView() {

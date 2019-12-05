@@ -152,10 +152,10 @@ object LocalRepository : Repository {
 
     override fun markTrainingAssist(trainingId: Long) {
         var index =0
-        createWeekSchedule().forEach {
+        allTrainings.forEach {
             if (it.id == trainingId) {
-                var trainingNew : TrainingSession = it.copy(userJoined = true)
-                trainingsOfDay[index] = trainingNew
+                var trainingNew : TrainingSession = it.copy(userJoined = true,participants =it.participants+1)
+                allTrainings[index] = trainingNew
             }
 
             index++
@@ -165,10 +165,10 @@ object LocalRepository : Repository {
 
     override fun markTrainingNoAssist(trainingId: Long) {
         var index =0
-        createWeekSchedule().forEach {
+        allTrainings.forEach {
             if (it.id == trainingId) {
-                var trainingNew : TrainingSession = it.copy(userJoined = false)
-                trainingsOfDay[index] = trainingNew
+                var trainingNew : TrainingSession = it.copy(userJoined = false,participants =it.participants-1)
+                allTrainings[index] = trainingNew
             }
 
             index++
