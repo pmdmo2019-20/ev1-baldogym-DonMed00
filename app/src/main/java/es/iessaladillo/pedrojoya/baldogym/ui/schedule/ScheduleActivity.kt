@@ -14,6 +14,7 @@ import es.iessaladillo.pedrojoya.baldogym.data.LocalRepository
 import es.iessaladillo.pedrojoya.baldogym.data.entity.TrainingSession
 import es.iessaladillo.pedrojoya.baldogym.data.entity.WeekDay
 import es.iessaladillo.pedrojoya.baldogym.data.entity.getCurrentWeekDay
+import es.iessaladillo.pedrojoya.baldogym.ui.trainingsession.TrainingSessionActivity
 import es.iessaladillo.pedrojoya.baldogym.utils.invisibleUnless
 import kotlinx.android.synthetic.main.schedule_activity.*
 
@@ -22,9 +23,11 @@ class ScheduleActivity : AppCompatActivity() {
         ScheduleActivityViewModelFactory(LocalRepository, application)
     }
     private val listAdapter: ScheduleActivityAdapter = ScheduleActivityAdapter().also {
-        it.onItemClickListener = { position ->
+        it.onButtonPressListener = { position ->
             changeJoin(position)
-
+        }
+        it.onItemClickListener = {position ->
+            navigatetoTrainingSessionActivity(it.getItemId(position))
         }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -120,8 +123,11 @@ class ScheduleActivity : AppCompatActivity() {
     private fun changeJoin(position: Int) {
         val trainingSession = listAdapter.getItem(position)
         viewModel.updateTrainingJoinState(trainingSession, trainingSession.userJoined)
+    }
 
-
+    private fun navigatetoTrainingSessionActivity(id : Long) {
+        val intent = TrainingSessionActivity.newIntent(this,id)
+        startActivity(intent)
     }
 
 }

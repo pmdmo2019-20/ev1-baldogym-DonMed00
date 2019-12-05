@@ -4,8 +4,99 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.trainingsession.TrainingSessionActivity">
+    tools:context=".ui.trainingsession.TrainingSessionActivity"
+    >
 
-    <!-- TODO -->
+
+    <ImageView
+        android:id="@+id/imgTraining"
+        android:layout_width="371dp"
+        android:layout_height="189dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.549"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bodypump" />
+
+    <TextView
+        android:id="@+id/lblTitleAct"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgTraining" />
+
+    <TextView
+        android:id="@+id/lblTrainerAct"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:textSize="15sp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/lblTitleAct"
+        app:layout_constraintTop_toBottomOf="@+id/lblTitleAct" />
+
+    <TextView
+        android:id="@+id/lblDay"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/lblTrainerAct"
+        app:layout_constraintTop_toBottomOf="@+id/lblTrainerAct" />
+
+    <TextView
+        android:id="@+id/lblTimeAct"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/lblDay"
+        app:layout_constraintTop_toBottomOf="@+id/lblDay" />
+
+    <TextView
+        android:id="@+id/lblRoomAct"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/lblTimeAct"
+        app:layout_constraintTop_toBottomOf="@+id/lblTimeAct" />
+
+    <TextView
+        android:id="@+id/lblDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblRoomAct" />
+
+    <TextView
+        android:id="@+id/lblBar"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="@color/black"
+        android:layout_marginBottom="0dp"
+        android:text="TextView"
+        android:paddingLeft="20dp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblDescription"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btnJoinAct"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="@string/schedule_item_join"
+        android:background="@color/black"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/lblBar"
+        app:layout_constraintEnd_toEndOf="@+id/lblBar"
+        app:layout_constraintTop_toTopOf="@+id/lblBar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

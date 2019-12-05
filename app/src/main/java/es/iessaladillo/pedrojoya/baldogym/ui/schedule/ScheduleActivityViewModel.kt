@@ -49,6 +49,10 @@ class ScheduleActivityViewModel(
         _currentDay.value = weekDay
     }
 
+     fun getElement(id: Long): TrainingSession {
+        return repository.getElement(id)
+    }
+
 
 
 }

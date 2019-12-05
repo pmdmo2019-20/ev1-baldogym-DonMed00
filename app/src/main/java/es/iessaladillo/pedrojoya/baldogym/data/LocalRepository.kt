@@ -13,6 +13,7 @@ object LocalRepository : Repository {
     init {
         fillList()
     }
+
     private fun createWeekSchedule(): List<TrainingSession> {
 
         data class SessionType(val name: String, val photoResId: Int, val description: String)
@@ -134,7 +135,8 @@ object LocalRepository : Repository {
         }
         return trainingSessions
     }
-    fun fillList(){
+
+    fun fillList() {
         createWeekSchedule().forEach {
             allTrainings.add(it)
         }
@@ -151,10 +153,11 @@ object LocalRepository : Repository {
     }
 
     override fun markTrainingAssist(trainingId: Long) {
-        var index =0
+        var index = 0
         allTrainings.forEach {
             if (it.id == trainingId) {
-                var trainingNew : TrainingSession = it.copy(userJoined = true,participants =it.participants+1)
+                var trainingNew: TrainingSession =
+                    it.copy(userJoined = true, participants = it.participants + 1)
                 allTrainings[index] = trainingNew
             }
 
@@ -164,15 +167,26 @@ object LocalRepository : Repository {
     }
 
     override fun markTrainingNoAssist(trainingId: Long) {
-        var index =0
+        var index = 0
         allTrainings.forEach {
             if (it.id == trainingId) {
-                var trainingNew : TrainingSession = it.copy(userJoined = false,participants =it.participants-1)
+                var trainingNew: TrainingSession =
+                    it.copy(userJoined = false, participants = it.participants - 1)
                 allTrainings[index] = trainingNew
             }
 
             index++
         }
+    }
+
+    override fun getElement(id: Long): TrainingSession {
+        var trainingSession: TrainingSession = allTrainings[0]
+        allTrainings.forEach {
+            if (it.id == id) {
+                trainingSession = it
+            }
+        }
+        return trainingSession
     }
 
 }

@@ -17,4 +17,6 @@ interface Repository {
     // el recibido.
     fun markTrainingNoAssist(taskId: Long)
 
+    fun getElement(id: Long): TrainingSession
+
 }

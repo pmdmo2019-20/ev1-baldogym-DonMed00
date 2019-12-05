@@ -14,7 +14,9 @@ import kotlinx.android.synthetic.main.schedule_activity_item.view.*
 class ScheduleActivityAdapter : RecyclerView.Adapter<ScheduleActivityAdapter.ViewHolder>() {
 
     private var data: List<TrainingSession> = emptyList()
+    var onButtonPressListener: ((Int) -> Unit)? = null
     var onItemClickListener: ((Int) -> Unit)? = null
+
 
     init {
         setHasStableIds(true)
@@ -55,7 +57,8 @@ class ScheduleActivityAdapter : RecyclerView.Adapter<ScheduleActivityAdapter.Vie
         RecyclerView.ViewHolder(containerView), LayoutContainer {
 
         init {
-            btnJoin.setOnClickListener { onItemClickListener?.invoke(adapterPosition) }
+            containerView.setOnClickListener { onItemClickListener?.invoke(adapterPosition) }
+            btnJoin.setOnClickListener { onButtonPressListener?.invoke(adapterPosition) }
         }
 
         @SuppressLint("ResourceAsColor")
