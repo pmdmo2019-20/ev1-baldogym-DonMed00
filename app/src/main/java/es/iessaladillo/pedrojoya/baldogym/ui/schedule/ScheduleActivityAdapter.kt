@@ -1,5 +1,6 @@
 package es.iessaladillo.pedrojoya.baldogym.ui.schedule
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import es.iessaladillo.pedrojoya.baldogym.R
 import es.iessaladillo.pedrojoya.baldogym.data.entity.TrainingSession
 import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.schedule_activity_item.view.*
 
 class ScheduleActivityAdapter : RecyclerView.Adapter<ScheduleActivityAdapter.ViewHolder>() {
 
@@ -55,7 +57,17 @@ class ScheduleActivityAdapter : RecyclerView.Adapter<ScheduleActivityAdapter.Vie
             //seton click
         }
 
+        @SuppressLint("ResourceAsColor")
         fun bind(trainingSession: TrainingSession) {
+            trainingSession.run {
+                containerView.lblTime.text =time
+                containerView.imgActivity.setImageResource(photoResId)
+                containerView.lblTitle.text= name
+                containerView.lblTrainer.text = trainer
+                containerView.lblRoom.text=room
+                containerView.lblParticipants.text= "$participants participantes"
+
+            }
 
         }
     }

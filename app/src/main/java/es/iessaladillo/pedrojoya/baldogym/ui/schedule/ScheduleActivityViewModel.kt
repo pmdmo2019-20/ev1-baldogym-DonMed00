@@ -27,7 +27,7 @@ class ScheduleActivityViewModel(
     }
 
     private fun refreshLists(newList: List<TrainingSession>) {
-        _trainings.value = newList.sortedByDescending { it.id }
+        _trainings.value = newList.sortedBy { it.time }
     }
 
     fun filterAllTrainingsOfDay(weekDay: WeekDay){
