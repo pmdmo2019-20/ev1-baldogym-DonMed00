@@ -21,6 +21,10 @@ class ScheduleActivityViewModel(
     private val _currentDay: MutableLiveData<WeekDay> =
         MutableLiveData(getCurrentWeekDay())
 
+    private val _element : MutableLiveData<TrainingSession> = MutableLiveData()
+    val element : LiveData<TrainingSession>
+    get() = _element
+
     init {
         refreshLists(repository.queryAllTrainingsOfDay(getCurrentWeekDay()))
 
@@ -41,6 +45,7 @@ class ScheduleActivityViewModel(
             repository.markTrainingNoAssist(trainingSession.id)
         }
         queryTrainings(_currentDay.value!!)
+        getElement(trainingSession.id)
     }
 
 
@@ -50,7 +55,8 @@ class ScheduleActivityViewModel(
     }
 
      fun getElement(id: Long): TrainingSession {
-        return repository.getElement(id)
+         _element.value = repository.getElement(id)
+        return element.value!!
     }
 
 

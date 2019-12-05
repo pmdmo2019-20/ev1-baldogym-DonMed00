@@ -11,6 +11,7 @@ import es.iessaladillo.pedrojoya.baldogym.data.LocalRepository
 import es.iessaladillo.pedrojoya.baldogym.data.entity.TrainingSession
 import es.iessaladillo.pedrojoya.baldogym.ui.schedule.ScheduleActivityViewModel
 import es.iessaladillo.pedrojoya.baldogym.ui.schedule.ScheduleActivityViewModelFactory
+import kotlinx.android.synthetic.main.schedule_activity_item.*
 import kotlinx.android.synthetic.main.training_session_activity.*
 
 class TrainingSessionActivity : AppCompatActivity() {
@@ -29,8 +30,11 @@ class TrainingSessionActivity : AppCompatActivity() {
         setupViews()
     }
 
+
+
     private fun setupViews() {
         val training : TrainingSession =viewModel.getElement(id)
+        btnJoinAct.setOnClickListener { viewModel.updateTrainingJoinState(training,training.userJoined) }
         imgTraining.setImageResource(training.photoResId)
         lblTitleAct.text =training.name
         lblTimeAct.text = training.time
@@ -38,7 +42,8 @@ class TrainingSessionActivity : AppCompatActivity() {
         lblTrainerAct.text = training.trainer
         lblDay.text = training.weekDay.toString()
         lblDescription.text = training.description
-        lblBar.text=training.participants.toString().plus(" participants")
+        lblBar.text=viewModel.element.value?.participants.toString().plus(" participants")
+
 
     }
 
